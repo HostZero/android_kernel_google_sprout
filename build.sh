@@ -35,14 +35,17 @@ nocol='\033[0m'         # Default
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER="HostZero"
-export KBUILD_BUILD_HOST="Linux"
-export CROSS_COMPILE=/home/hostzero/linaro-5.2/bin/arm-eabi-
+export KBUILD_BUILD_HOST="PandoraKernel"
+export CROSS_COMPILE=/home/hostzero/UBERTC-arm-eabi-6.0/bin/arm-eabi-
 
 # Compilation Scripts
 compile_kernel ()
 {
+echo -e "$blue***********************************************"
+echo "          Compiling PandoraKernel          "
+echo -e "***********************************************$nocol"
 make clean && make mrproper
-make sprout_defconfig
+make pandora_defconfig
 make -j2
 if ! [ -a $ZIMAGE ];
 then
